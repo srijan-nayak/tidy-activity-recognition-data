@@ -60,3 +60,9 @@ activity_labels <- activity_labels %>%
 # transform the activity numbers to activity names
 merged_data <- merged_data %>% 
   mutate(activity = activity_labels$label[activity])
+
+# select only the mean and std for each measurement
+variables <- colnames(merged_data)
+req_variables <- grep("mean|std", variables, value = TRUE)
+req_data <- merged_data %>% 
+  select(subject, activity, req_variables)
