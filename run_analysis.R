@@ -53,7 +53,7 @@ activity_labels <- read_table2("UCI HAR Dataset/activity_labels.txt",
 # change label formatting from 'UPPER_CASE' to 'lower case' 
 activity_labels <- activity_labels %>% 
   mutate(label = {
-    lower_split <- strsplit(tolower(label), "_");
+    lower_split <- strsplit(tolower(label), "_")
     sapply(lower_split, function(ls) paste(ls, collapse = " "))
   }) %>% arrange(activity)
 
