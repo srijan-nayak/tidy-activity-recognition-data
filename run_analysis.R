@@ -30,3 +30,15 @@ x_train <- x_train %>%
 x_test <- x_test %>% 
   mutate(subject = parse_integer(subject_test)) %>% 
   select(subject, everything())
+
+# read in the activity labels for each column
+activity_train <- read_lines("./UCI HAR Dataset/train/y_train.txt")
+activity_test <- read_lines("./UCI HAR Dataset/test/y_test.txt")
+
+# create new activity column
+x_train <- x_train %>% 
+  mutate(activity = parse_integer(activity_train)) %>% 
+  select(subject, activity, everything())
+x_test <- x_test %>% 
+  mutate(activity = parse_integer(activity_test)) %>% 
+  select(subject, activity, everything())
