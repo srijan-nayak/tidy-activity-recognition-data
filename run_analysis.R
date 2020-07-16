@@ -55,7 +55,7 @@ activity_labels <- read_table2("UCI HAR Dataset/activity_labels.txt",
 activity_labels <- activity_labels %>% 
   mutate(label = {
     lower_split <- strsplit(tolower(label), "_")
-    sapply(lower_split, function(ls) paste(ls, collapse = " "))
+    sapply(lower_split, function(el) paste(el, collapse = " "))
   }) %>% arrange(activity)
 
 # transform the activity numbers to activity names
