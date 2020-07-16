@@ -42,3 +42,6 @@ x_train <- x_train %>%
 x_test <- x_test %>% 
   mutate(activity = parse_integer(activity_test)) %>% 
   select(subject, activity, everything())
+
+# merge both train and test datasets
+merged_data <- rbind(x_train, x_test)
