@@ -1,5 +1,6 @@
 library(dplyr)
 library(readr)
+library(stringr)
 
 # download and unzip the raw data
 download.file(
@@ -63,6 +64,14 @@ merged_data <- merged_data %>%
 
 # select only the mean and std for each measurement
 variables <- colnames(merged_data)
-req_variables <- grep("mean|std", variables, value = TRUE)
+req_variables <- grep("(mean|std)\\(\\)", variables, value = TRUE)
 req_data <- merged_data %>% 
   select(subject, activity, req_variables)
+
+# make all variable names lower case without special characters
+col_names <- colnames(req_data) %>% 
+  tolower() %>% 
+  strsplit("-") %>% 
+  sapply(function(el) paste(el, collapse = "")) %>% 
+  str_replace("\\(\\)", "")
+colnames(req_data) <- col_names
