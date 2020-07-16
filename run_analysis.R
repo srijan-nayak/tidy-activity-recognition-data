@@ -80,3 +80,6 @@ colnames(req_data) <- col_names
 final_data <- req_data %>% 
   group_by(subject, activity) %>% 
   summarise(across(.fns = mean))
+
+# export the tidy summary data to a csv file
+write_csv(final_data, "tidy-summary-har.csv")
