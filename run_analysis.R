@@ -75,3 +75,8 @@ col_names <- colnames(req_data) %>%
   sapply(function(el) paste(el, collapse = "")) %>% 
   str_replace("\\(\\)", "")
 colnames(req_data) <- col_names
+
+# take the average of all measurement by activity and subject
+final_data <- req_data %>% 
+  group_by(subject, activity) %>% 
+  summarise(across(.fns = mean))
