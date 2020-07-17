@@ -82,4 +82,4 @@ final_data <- req_data %>%
   summarise(across(.fns = mean))
 
 # export the tidy summary data to a csv file
-write.table(final_data, "tidy-har-summary.txt")
+write.table(final_data, "tidy-har-summary.txt", row.names = FALSE)
