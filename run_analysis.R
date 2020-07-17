@@ -5,7 +5,7 @@ library(stringr)
 # download and unzip the raw data
 download.file(
   "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",
-  destfile = "uci-har.zip"
+  destfile = "./uci-har.zip"
 )
 unzip("./uci-har.zip")
 
@@ -48,7 +48,7 @@ x_test <- x_test %>%
 merged_data <- rbind(x_train, x_test)
 
 # get the labels for each activity number
-activity_labels <- read_table2("UCI HAR Dataset/activity_labels.txt",
+activity_labels <- read_table2("./UCI HAR Dataset/activity_labels.txt",
                                col_names = c("activity", "label"))
 
 # change label formatting from 'UPPER_CASE' to 'lower case' 
@@ -82,4 +82,4 @@ final_data <- req_data %>%
   summarise(across(.fns = mean))
 
 # export the tidy summary data to a csv file
-write.table(final_data, "tidy-har-summary.txt", row.names = FALSE)
+write.table(final_data, "./tidy-har-summary.txt", row.names = FALSE)
