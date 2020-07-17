@@ -1,7 +1,5 @@
 # UCI Human Activity Recognition Summarized Dataset Codebook
 
-- - -
-
 ### `subject`
 
 Tells which subject was performing a given activity.
