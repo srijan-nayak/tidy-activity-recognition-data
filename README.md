@@ -8,7 +8,7 @@ from the root project directory with
 ## Downloading data
 
 The script first downloads and unzips the required data, so the script might
-a while depending on the internet connection.
+take a while depending on the internet connection.
 
 ## Reading both train and test data
 
